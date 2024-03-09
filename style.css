@@ -1,0 +1,43 @@
+/* style.css */
+
+/* Styling for the heading */
+h1 {
+  background-color: rgb(231, 231, 231);
+  color: green;
+  font-size: xx-large;
+  padding: 2%;
+  /* width: 70vh; */
+}
+
+/* Style for the card and border */
+.card {
+  min-width: 30%;
+  width: 50vh;
+  min-height: 30vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  margin: auto;
+  padding: 2%;
+}
+
+/* Font and display style for complete body */
+body {
+  display: flex;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+/* Adding style for input box */
+input {
+  width: 30px;
+  padding: 1%;
+  font-size: larger;
+  text-align: center;
+  margin-left: 2%;
+}
+
+/* Adding style for display word*/
+#displayWord {
+  font-size: xx-large;
+}
