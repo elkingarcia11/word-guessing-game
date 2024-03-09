@@ -21,5 +21,5 @@ or
 
 2. Create a deployment object using the YAML file below:
    ```bash
-   kubectl apply -f https://k8s.io/examples/application/deployment.yaml
+   kubectl apply -f nginx-deployment.yaml
    ```
