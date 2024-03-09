@@ -1,0 +1,25 @@
+# Nginx Deployment Manifest
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-webapp-deployment
+  labels:
+    app: nginx-webapp
+    tier: frontend
+spec: # Replication controller
+  replicas: 1
+  selector:
+    matchLabels: # Adopts labels from Pod Template below
+      app: nginx-webapp
+      tier: frontend
+  template: # Template for pods
+    metadata:
+      labels: # Pod labels
+        app: nginx-webapp
+        tier: frontend
+    spec: # Single container Pod spec
+      containers: 
+      - name: nginx-container
+        image: word-guessing-game # Docker image
+        ports: # set port on Pod
+        - containerPort: 80
