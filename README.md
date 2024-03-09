@@ -8,6 +8,7 @@ This simple web-based word guessing game challenges users to guess a word relate
 - [Getting Started](#getting-started)
 - [How to Play](#how-to-play)
 - [Styling](#styling)
+- [Hosting with Docker](#hosting-with-docker)
 
 ## Game Preview
 
@@ -48,5 +49,29 @@ The game features a simple and responsive design with a card layout. The styling
 - **Display Word:** The displayed word is styled with a larger font size, making it easily readable for players.
 
 Feel free to customize the styling according to your preferences by modifying the `style.css` file.
+
+
+## Hosting with Docker
+
+To host the Word Guessing Game using Docker, follow these steps:
+1. Download Docker and start the Docker daemon on your machine
+
+2. Open a terminal and navigate to the directory containing the Dockerfile.
+
+3. Build the Docker image:
+
+   ```bash
+   docker build -t word-guessing-game .
+   ```
+
+4. Run the Docker container:
+
+   ```bash
+   docker run -p 80:80 word-guessing-game
+   ```
+
+5. Open your web browser and go to [http://localhost:80](http://localhost:80) to play the Word Guessing Game.
+
+Now, the Word Guessing Game should be running in a Docker container on your local machine. You can customize the port mapping in the `docker run` command if you prefer a different port.
 
 Enjoy playing the Word Guessing Game! If you have any feedback or suggestions, feel free to contribute or open an issue in the repository.
