@@ -54,8 +54,6 @@ class WordGuessesDatabase:
 
             for topic in data['topics']:
                 for hint in topic['hints']:
-                    print(
-                        topic['topic'], hint['hint'], hint['answer'])
                     self.insert_item_into_database(
                         topic['topic'], hint['hint'], hint['answer'])
         except Exception as e:
@@ -73,33 +71,31 @@ class WordGuessesDatabase:
             self.close_connection()
 
     def insert_item_into_database(self, topic: str, hint: str, answer: str):
-        if self.item_exists(topic,hint,answer) is not False:
+        if not self.item_exists(topic, hint, answer):
             try:
                 self.cursor.execute("USE {}".format(self.database))
                 insert_query = "INSERT INTO word_guesses (topic, hint, answer) VALUES (%s, %s, %s)"
                 self.cursor.execute(insert_query, (topic, hint, answer))
                 self.connection.commit()
+                print("Item inserted successfully.")
             except mysql.connector.Error as err:
                 print(f"Error inserting item into database: {err}")
+                # You may choose to raise an exception here for better handling
         else:
-            print("Hint:{hint} and answer:{answer} under topic {topic} already exists in the database")
-
-    def delete_item_from_database(self):
-        pass
-
-    def update_item_from_database(self):
-        pass
+            print(f"Hint: {hint} and answer: {answer} under topic {topic} already exist in the database.")
 
     def item_exists(self, topic: str, hint: str, answer: str) -> bool:
         try:
-            self.cursor.execute(
-                "SELECT id FROM word_guesses WHERE topic = %s AND hint = %s AND answer = %s",
-                (topic, hint, answer),
-            )
+            query = "SELECT id FROM word_guesses WHERE topic = %s AND hint = %s AND answer = %s"
+            self.cursor.execute(query, (topic, hint, answer))
             return self.cursor.fetchone() is not None
         except mysql.connector.Error as err:
             print(f"Error checking if item exists: {err}")
-            return False        
+            return False
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+            return False
+        
 
 db_instance = WordGuessesDatabase()
 db_instance.create_database()

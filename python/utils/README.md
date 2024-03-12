@@ -50,6 +50,10 @@ Retrieves a random word from the database.
 
 Inserts a new item (topic, hint, answer) into the database, ensuring no duplicates.
 
+### `item_exists(topic: str, hint: str, answer: str) -> bool`
+
+Checks if an item with the specified topic, hint, and answer already exists in the database.
+
 ### `delete_item_from_database()`
 
 Not implemented. Placeholder for future functionality.
