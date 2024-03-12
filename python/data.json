@@ -1,0 +1,67 @@
+{
+    "topics": [
+        {
+            "topic": "countries",
+            "hints": [
+                {
+                    "hint": "Home to the Acropolis and ancient history.",
+                    "answer": "Greece"
+                },
+                {
+                    "hint": "Known for tulip fields and windmills.",
+                    "answer": "Netherlands"
+                },
+                {
+                    "hint": "Land of the pyramids and the Sphinx.",
+                    "answer": "Egypt"
+                },
+                {
+                    "hint": "Famous for its fjords and northern lights.",
+                    "answer": "Norway"
+                }
+            ]
+        },
+        {
+            "topic": "Programming Languages",
+            "hints": [
+                {
+                    "hint": "Originally developed by Sun Microsystems, known for its 'Write Once, Run Anywhere' principle.",
+                    "answer": "Java"
+                },
+                {
+                    "hint": "Created by Guido van Rossum, emphasizes code readability and simplicity.",
+                    "answer": "Python"
+                },
+                {
+                    "hint": "Created by Microsoft, widely used for web development and supported by the .NET framework.",
+                    "answer": "C#"
+                },
+                {
+                    "hint": "A dynamically-typed language developed by Mozilla, often used for front-end web development.",
+                    "answer": "JavaScript"
+                }
+            ]
+        },
+        {
+            "topic": "animals",
+            "hints": [
+                {
+                    "hint": "This legless reptile is known for its distinctive hissing sound and its ability to shed its skin periodically.",
+                    "answer": "Snake"
+                },
+                {
+                    "hint": "This nocturnal bird of prey is often associated with wisdom and is known for its silent flight.",
+                    "answer": "Owl"
+                },
+                {
+                    "hint": "A large mammal native to Africa, known for its tusks and distinctive long trunk.",
+                    "answer": "Elephant"
+                },
+                {
+                    "hint": "This marine mammal is often associated with balancing a ball on its nose in aquatic shows.",
+                    "answer": "Seal"
+                }
+            ]
+        }
+    ]
+}
