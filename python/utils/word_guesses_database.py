@@ -27,7 +27,8 @@ class WordGuessesDatabase:
         try:
             connection = self.get_database_connection()
             cursor = connection.cursor()
-            cursor.execute("CREATE DATABASE IF NOT EXISTS {}".format(self.database))
+            cursor.execute(
+                "CREATE DATABASE IF NOT EXISTS {}".format(self.database))
             cursor.execute("USE {}".format(self.database))
             table_creation_query = """
                 CREATE TABLE IF NOT EXISTS word_guesses (
@@ -62,8 +63,10 @@ class WordGuessesDatabase:
     def get_random_word(self):
         try:
             self.cursor.execute("USE {}".format(self.database))
-            self.cursor.execute("SELECT * FROM word_guesses ORDER BY RAND() LIMIT 1")
+            self.cursor.execute(
+                "SELECT * FROM word_guesses ORDER BY RAND() LIMIT 1")
             random_row = self.cursor.fetchone()
+            print(random_row)
             return random_row
         except mysql.connector.Error as err:
             print(f"Error getting random word: {err}")
@@ -82,7 +85,8 @@ class WordGuessesDatabase:
                 print(f"Error inserting item into database: {err}")
                 # You may choose to raise an exception here for better handling
         else:
-            print(f"Hint: {hint} and answer: {answer} under topic {topic} already exist in the database.")
+            print(
+                f"Hint: {hint} and answer: {answer} under topic {topic} already exist in the database.")
 
     def item_exists(self, topic: str, hint: str, answer: str) -> bool:
         try:
@@ -95,10 +99,8 @@ class WordGuessesDatabase:
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
             return False
-        
+
 
 db_instance = WordGuessesDatabase()
 db_instance.create_database()
-db_instance.import_data_from_json_file("../data.json")
-random_word = db_instance.get_random_word()
-print("Random Word:", random_word)
+# db_instance.import_data_from_json_file("../data.json")

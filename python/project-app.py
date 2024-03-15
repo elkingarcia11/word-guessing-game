@@ -1,33 +1,20 @@
 from flask import Flask, render_template
 import mysql.connector
+import os
+from python.utils.word_guesses_database import db_instance
 
 app = Flask(__name__)
 
-# Configure MySQL connection
-db_config = {
-    'host': 'localhost',
-    'port': 3307,
-    'user': 'DB_USER',
-    'password': 'insert_password',
-    'database': 'wordguesses',
-}
 
 @app.route('/')
 def index():
-    # Connect to the database
-    conn = mysql.connector.connect(**db_config)
-    cursor = conn.cursor()
+    random_word = db_instance.get_random_word()
+    print(random_word)
+    topic = random_word[1]  # topic
+    hint = random_word[2]  # hint
+    answer = random_word[3]  # answer
+    return render_template('index.html', topic=topic, hint=hint, answer=answer)
 
-    # Fetch words
-    cursor.execute('SELECT * FROM word_guesses ORDER BY RAND() LIMIT 1')
-    random_row = cursor.fetchone()
-
-    # Close the database connection
-    cursor.close()
-    conn.close()
-
-    return render_template('index.html', students=students, courses=courses)
 
 if __name__ == '__main__':
     app.run(debug=True)
- 
