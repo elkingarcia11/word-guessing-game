@@ -1,10 +1,10 @@
 # Word Guesses Database
 
-This repository contains a simple Python class, `WordGuessesDatabase`, designed to interact with a MySQL database for managing word guesses. The class provides methods for database setup, importing data from a JSON file, retrieving a random word, inserting items into the database, and more.
+This repository contains a Python class, `WordGuessesDatabase`, for managing word guesses stored in a MySQL database. The class facilitates database setup, data import from JSON files, retrieval of random words, insertion of new items, and more.
 
 ## Installation
 
-To use this class, follow the steps below:
+To use this class, follow these steps:
 
 1. Install MySQL using Homebrew:
 
@@ -21,9 +21,7 @@ To use this class, follow the steps below:
 
 ## Setup
 
-Before connecting to a MySQL database from your Python script, you need to ensure that the database, user, and required privileges are set up on the MySQL server
-
-Before using the `WordGuessesDatabase` class, set up your MySQL database and configure the required environment variables. Create a `.env` file in your project directory with the following variables:
+Before using the `WordGuessesDatabase` class, set up your MySQL database and configure the necessary environment variables. Create a `.env` file in your project directory with the following variables:
 
 ```dotenv
 DB_HOST=your_database_host
@@ -36,11 +34,11 @@ DB_NAME=your_database_name
 
 ### `create_database()`
 
-Creates the database and the necessary table (`word_guesses`) if they do not exist.
+Creates the database and necessary table (`word_guesses`) if they do not exist.
 
 ### `import_data_from_json_file(filepath: str)`
 
-Imports data from a JSON file into the database. The JSON file structure should have topics, hints, and answers.
+Imports data from a JSON file into the database. The JSON file structure should contain topics, hints, and answers.
 
 ### `get_random_word()`
 
@@ -48,7 +46,7 @@ Retrieves a random word from the database.
 
 ### `insert_item_into_database(topic: str, hint: str, answer: str)`
 
-Inserts a new item (topic, hint, answer) into the database, ensuring no duplicates.
+Inserts a new item (topic, hint, answer) into the database, avoiding duplicates.
 
 ### `item_exists(topic: str, hint: str, answer: str) -> bool`
 
@@ -56,11 +54,11 @@ Checks if an item with the specified topic, hint, and answer already exists in t
 
 ### `delete_item_from_database()`
 
-Not implemented. Placeholder for future functionality.
+_Not implemented._ Placeholder for future functionality.
 
 ### `update_item_from_database()`
 
-Not implemented. Placeholder for future functionality.
+_Not implemented._ Placeholder for future functionality.
 
 ### `close_connection()`
 
@@ -85,7 +83,7 @@ import json
 
 db_instance = WordGuessesDatabase()
 db_instance.create_database()
-db_instance.import_data_from_json_file("../data.json")
+# db_instance.import_data_from_json_file("../data.json")
 random_word = db_instance.get_random_word()
 print("Random Word:", random_word)
 ```

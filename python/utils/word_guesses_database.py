@@ -103,4 +103,3 @@ class WordGuessesDatabase:
 
 db_instance = WordGuessesDatabase()
 db_instance.create_database()
-# db_instance.import_data_from_json_file("../data.json")
