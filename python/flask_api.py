@@ -9,12 +9,16 @@ CORS(app)  # Apply CORS to your Flask app
 @app.route('/api/get_random_word')
 def index():
     random_word = db_instance.get_random_word()
+    if random_word is None:
+        return jsonify({'error': 'No word found'}), 500
+
     # Create some sample data
     response = {
         'topic': random_word[1],
         'hint': random_word[2],
         'answer': random_word[3],
     }
+
     # Return a JSON response
     return jsonify(response)
 
