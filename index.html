@@ -4,29 +4,34 @@
 <html>
 
 <head>
-	<title>Word Guessing Game</title>
-	<link rel="stylesheet" href="style.css" />
-	<script src="./script.js"></script>
+    <title>Word Guessing Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js"></script>
 </head>
 
 <body>
-	<div class="card">
-		<h1>Guess the word</h1>
-		<p>
-			<b>Topic:</b> <span id="topic"></span>
-		</p>
-		<p>
-			<b>Hint:</b> <span id="hint"></span>
-		</p>
-		<p id="displayWord"></p>
-		<p>Guess one letter:
+    <div class="card">
+        <h1>Guess the word</h1>
+        <p>
+            <b>Topic:</b> <span id="topic"></span>
+        </p>
+        <p>
+            <b>Hint:</b> <span id="hint"></span>
+        </p>
+        <p id="displayWord"></p>
+        <p>Guess one letter:
 
-			<input onchange="shouldDisableSubmit()" type="text" maxlength="1" id="letter-input">
-		</p>
-		<button id="guess-btn" disabled="shouldDisableSubmit()" onclick="guessLetter()">
-			Submit
-		</button>
-	</div>
+            <input onchange="shouldDisableSubmit()" type="text" maxlength="1" id="letter-input">
+        </p>
+        <div>
+            <button id="guess-btn" disabled="shouldDisableSubmit()" onclick="guessLetter()">
+                Submit
+            </button>
+            <button id="refresh-btn" onclick="location.reload()">
+                New Word
+            </button>
+        </div>
+    </div>
 </body>
 
 </html>
