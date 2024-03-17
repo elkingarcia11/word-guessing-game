@@ -36,6 +36,9 @@ input {
   text-align: center;
   margin-left: 2%;
 }
+#guess-result {
+  margin-left: 5px;
+}
 
 /* Adding style for display word*/
 #displayWord {
@@ -46,6 +49,11 @@ input {
   }
 }
 
-#guess-result {
-  margin-left: 5px;
+/* Adding style for buttons */
+button {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
