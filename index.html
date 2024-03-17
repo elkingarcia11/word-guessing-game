@@ -1,35 +1,36 @@
 <!-- index.html -->
 
-<!DOCTYPE html> 
-<html> 
+<!DOCTYPE html>
+<html>
 
-<head> 
-	<title>Word Guessing Game</title> 
-	<link rel="stylesheet"
-		href="style.css" /> 
-	<script src="./script.js"></script> 
-</head> 
+<head>
+    <title>Word Guessing Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js"></script>
+</head>
 
-<body> 
-	<div class="card"> 
-		<h1>Guess the word</h1> 
-		<p> 
-			<b>Topic:</b> <span id="topic"></span>
-		</p> 
-		<p> 
-			<b>Hint:</b> <span id="hint"></span>
-		</p> 
-		<p id="displayWord"></p> 
-		<p>Guess one letter: 
-
-			<input type="text"
-				maxlength="1"
-				id="letter-input"> 
-		</p> 
-		<button disabled="shouldDisableSubmit()" onclick="guessLetter()"> 
-			Submit 
-		</button> 
-	</div> 
-</body> 
+<body>
+    <div class="card">
+        <h1>Guess the word</h1>
+        <p>
+            <b>Topic:</b> <span id="topic"></span>
+        </p>
+        <p>
+            <b>Hint:</b> <span id="hint"></span>
+        </p>
+        <p id="displayWord"></p>
+        <p>Guess one letter:
+            <input onchange="shouldDisableSubmit()" type="text" maxlength="1" id="letter-input"><span id="guess-result"></span>
+        </p>
+        <div>
+            <button id="guess-btn" disabled="shouldDisableSubmit()" onclick="guessLetter()">
+                Submit
+            </button>
+            <button id="refresh-btn" onclick="location.reload()">
+                New Word
+            </button>
+        </div>
+    </div>
+</body>
 
 </html>

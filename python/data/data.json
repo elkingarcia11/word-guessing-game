@@ -1,7 +1,7 @@
 {
     "topics": [
         {
-            "topic": "countries",
+            "topic": "Countries",
             "hints": [
                 {
                     "hint": "Home to the Acropolis and ancient history.",
@@ -43,7 +43,7 @@
             ]
         },
         {
-            "topic": "animals",
+            "topic": "Animals",
             "hints": [
                 {
                     "hint": "This legless reptile is known for its distinctive hissing sound and its ability to shed its skin periodically.",

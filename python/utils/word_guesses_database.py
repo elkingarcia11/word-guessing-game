@@ -11,12 +11,13 @@ class WordGuessesDatabase:
         self.user = os.getenv("DB_USER")
         self.password = os.getenv("DB_PASSWORD")
         self.database = os.getenv("DB_NAME")
+        self.port = os.getenv("DB_PORT")
         self.connection = self.get_database_connection()
         self.cursor = self.connection.cursor()
 
     def get_database_connection(self):
         return mysql.connector.connect(
-            host=self.host, user=self.user, password=self.password
+            host=self.host, port=self.port, user=self.user, password=self.password
         )
 
     def close_connection(self):
