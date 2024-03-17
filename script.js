@@ -30,44 +30,57 @@ fetch(apiUrl)
   });
 
 // To store the already guessed letters
-let guessedlist = [];
+let guessedList = [];
 
 // For initial display Word
 let displayWord = "";
-for (let i = 0; i < selectedWord.length; i++) {
-  displayWord += "_ ";
+if (selectedWord.length > 0) {
+  for (let i = 0; i < selectedWord.length; i++) {
+    displayWord += "_ ";
+  }
+
+  document.getElementById("displayWord").textContent = displayWord;
 }
-document.getElementById("displayWord").textContent = displayWord;
+
+// Function to check if submit button should be enabled
+function shouldDisableSubmit() {
+  let inputElement = document.getElementById("letter-input");
+  let letter = inputElement?.value?.toLowerCase();
+  if (!letter || !selectedWord) {
+    return true;
+  }
+
+  return false;
+}
 
 // Function to check Guessed letter
 function guessLetter() {
   let inputElement = document.getElementById("letter-input");
-  inputElement = inputElement.toLowerCase();
+  let letter = inputElement?.value?.toLowerCase();
+
   // To check empty input
-  if (!inputElement.value) {
+  if (!letter) {
     alert("Empty Input box. Please add input letter");
     return;
   }
-
-  let letter = inputElement.value.toLowerCase();
 
   // Clear the input field
   inputElement.value = "";
 
   // Check if the letter has already been guessed
-  if (guessedlist.includes(letter)) {
+  if (guessedList.includes(letter)) {
     alert("You have already guessed that letter!");
     return;
   }
 
   // Add the letter to the guessed letters array
-  guessedlist.push(letter);
+  guessedList.push(letter);
 
   // Update the word display based on the guessed letters
   let updatedDisplay = "";
   let allLettersGuessed = true;
   for (let i = 0; i < selectedWord.length; i++) {
-    if (guessedlist.includes(selectedWord[i])) {
+    if (guessedList.includes(selectedWord[i])) {
       updatedDisplay += selectedWord[i] + " ";
     } else {
       updatedDisplay += "_ ";
