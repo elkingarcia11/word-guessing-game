@@ -125,6 +125,9 @@ function guessLetter() {
 		// Show success message
 		setTimeout(() => {
 			alert("Congratulations! You guessed the word correctly!");
+      
+      // Start a new game
+      location.reload();
 		}, 500);
 	}
 }
