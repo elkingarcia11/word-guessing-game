@@ -45,3 +45,7 @@ input {
     color: green;
   }
 }
+
+#guess-result {
+  margin-left: 5px;
+}

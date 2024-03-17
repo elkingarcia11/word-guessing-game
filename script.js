@@ -78,9 +78,19 @@ function guessLetter() {
 	inputElement.value = "";
 	shouldDisableSubmit();
 
+  let guessIndicator = document.getElementById("guess-result");
+
+  const resetGuessMark = () => {
+    setTimeout(() => {
+      guessIndicator.innerHTML = "";
+    }, 500);
+  }
+
 	// Check if the letter has already been guessed
 	if (guessedList.includes(letter)) {
-		alert("You have already guessed that letter!");
+    guessIndicator.innerHTML = "&#x274c;";
+    alert("You have already guessed that letter!");
+    resetGuessMark();
 		return;
 	}
 
@@ -98,7 +108,15 @@ function guessLetter() {
 			allLettersGuessed = false;
 		}
 	}
-	document.getElementById("displayWord").textContent = updatedDisplay;
+
+  if (selectedWord.includes(letter)) {
+    guessIndicator.innerHTML = "&#10003;";
+  } else {
+    guessIndicator.innerHTML = "&#x274c;";
+  }
+
+  document.getElementById("displayWord").textContent = updatedDisplay;
+  resetGuessMark();
 
 	// Check if all letters have been guessed
 	if (allLettersGuessed) {
@@ -107,6 +125,6 @@ function guessLetter() {
 		// Show success message
 		setTimeout(() => {
 			alert("Congratulations! You guessed the word correctly!");
-		}, 1000);
+		}, 500);
 	}
 }
