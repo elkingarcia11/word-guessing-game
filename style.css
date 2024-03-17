@@ -40,4 +40,8 @@ input {
 /* Adding style for display word*/
 #displayWord {
   font-size: xx-large;
+
+  &.success {
+    color: green;
+  }
 }

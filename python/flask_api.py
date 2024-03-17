@@ -12,12 +12,17 @@ def index():
     if random_word is None:
         return jsonify({'error': 'No word found'}), 500
 
-    # Create some sample data
-    response = {
-        'topic': random_word[1],
-        'hint': random_word[2],
-        'answer': random_word[3],
-    }
+    try:
+        # Create some sample data
+        response = {
+            'topic': random_word[1],
+            'hint': random_word[2],
+            'answer': random_word[3],
+        }
+    except Exception as e:
+        errorMsg = f"An unexpected error occurred: {e}"
+        print(errorMsg)
+        return jsonify({'error': errorMsg }), 500
 
     # Return a JSON response
     return jsonify(response)

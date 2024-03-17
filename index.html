@@ -1,35 +1,32 @@
 <!-- index.html -->
 
-<!DOCTYPE html> 
-<html> 
+<!DOCTYPE html>
+<html>
 
-<head> 
-	<title>Word Guessing Game</title> 
-	<link rel="stylesheet"
-		href="style.css" /> 
-	<script src="./script.js"></script> 
-</head> 
+<head>
+	<title>Word Guessing Game</title>
+	<link rel="stylesheet" href="style.css" />
+	<script src="./script.js"></script>
+</head>
 
-<body> 
-	<div class="card"> 
-		<h1>Guess the word</h1> 
-		<p> 
+<body>
+	<div class="card">
+		<h1>Guess the word</h1>
+		<p>
 			<b>Topic:</b> <span id="topic"></span>
-		</p> 
-		<p> 
+		</p>
+		<p>
 			<b>Hint:</b> <span id="hint"></span>
-		</p> 
-		<p id="displayWord"></p> 
-		<p>Guess one letter: 
+		</p>
+		<p id="displayWord"></p>
+		<p>Guess one letter:
 
-			<input type="text"
-				maxlength="1"
-				id="letter-input"> 
-		</p> 
-		<button disabled="shouldDisableSubmit()" onclick="guessLetter()"> 
-			Submit 
-		</button> 
-	</div> 
-</body> 
+			<input onchange="shouldDisableSubmit()" type="text" maxlength="1" id="letter-input">
+		</p>
+		<button id="guess-btn" disabled="shouldDisableSubmit()" onclick="guessLetter()">
+			Submit
+		</button>
+	</div>
+</body>
 
 </html>
