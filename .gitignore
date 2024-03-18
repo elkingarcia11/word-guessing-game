@@ -1,2 +1,4 @@
-server/database/__pycache__/*
+server/__pycache__
+server/api/__pycache__
 server/database/__pycache__
+server/config/__pycache__

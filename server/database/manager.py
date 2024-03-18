@@ -1,7 +1,7 @@
 from sqlalchemy import func
 from sqlalchemy.orm import sessionmaker
 import json
-from models import WordGuesses, engine, Base
+from .models import WordGuesses, engine, Base
 from config import DatabaseConfig
 
 
