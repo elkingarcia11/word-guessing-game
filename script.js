@@ -15,7 +15,7 @@ try {
     })
     .then((data) => {
       // Handle the data received from the API
-      selectedWord = data.answer.toLowerCase();
+      selectedWord = data.answer;
 
       // Manipulate the DOM to display the variable value
       document.getElementById("topic").textContent = data.topic;
@@ -102,7 +102,7 @@ function guessLetter() {
   let updatedDisplay = "";
   let allLettersGuessed = true;
   for (let i = 0; i < selectedWord.length; i++) {
-    if (guessedList.includes(selectedWord[i])) {
+    if (guessedList.includes(selectedWord[i].toLowerCase())) {
       updatedDisplay += selectedWord[i] + " ";
     } else {
       updatedDisplay += "_ ";
@@ -110,7 +110,7 @@ function guessLetter() {
     }
   }
 
-  if (selectedWord.includes(letter)) {
+  if (selectedWord.toLowerCase().includes(letter)) {
     guessIndicator.innerHTML = "&#10003;";
   } else {
     guessIndicator.innerHTML = "&#x274c;";
