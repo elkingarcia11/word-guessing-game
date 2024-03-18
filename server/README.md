@@ -1,50 +1,29 @@
-````markdown
-# Flask Word Guess API
+# Server Project
 
-This repository contains a simple Flask API for generating random word guesses. It utilizes Flask-CORS for handling Cross-Origin Resource Sharing (CORS) and a database instance for retrieving random words.
+This project implements a server application using Flask for creating an API and managing a MySQL database.
 
-## Prerequisites
+## Files
 
-- Python 3.x
-- Flask
-- Flask-CORS
+- [`run.py`](./run.py): Entry point for running the server application.
+- [`.env`](./.env): Configuration file containing database connection details.
+- [`requirements.txt`](./requirements.txt): File listing project dependencies.
+- [`api`](./api/README.md): Directory containing the implementation of the API.
+- [`database`](./database/README.md): Directory containing scripts and modules for managing the database.
 
-## Installation
+## Setup
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your_username/flask-word-guess-api.git
-   ```
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Set up the database:
-   - Ensure your database is correctly configured. You may need to edit the database settings in `utils/word_guesses_database.py`.
-   - Populate the database with sample word guesses or provide your own dataset.
+1. Configure your `.env` variables with correct database connection details
+2. Install the project dependencies located in `requirements.txt`
+3. Set up your MySQL server, database and table by running `python setup.py` in your `database` directory.
 
-## Usage
+## Running the Server
 
-1. Run the Flask server:
-   ```bash
-   python app.py
-   ```
-2. Access the API endpoint to get a random word guess:
-   ```
-   GET /api/get_random_word
-   ```
-   This endpoint will return a JSON object containing the randomly selected word guess along with its topic, hint, and answer.
+To run the server application, execute the following command:
 
-## API Endpoints
+```bash
+python run.py
+```
 
-- **GET /api/get_random_word**: Retrieves a random word guess from the database.
+## Simulating requests to Flask api server
 
-## Configuration
-
-- **DEBUG**: Set to `True` to enable debug mode.
-- **CORS**: Cross-Origin Resource Sharing settings can be adjusted in the `CORS` initialization.
-
-## Contributing
-
-Contributions are welcome! Please follow the standard GitHub flow: fork the repository, create a new branch for your changes, commit your changes, and open a pull request.
-````
+1. Get random word: `curl http://127.0.0.1:5000/api/word`
