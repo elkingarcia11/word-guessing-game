@@ -1,14 +1,13 @@
 from database import db_instance
 from flask import Blueprint, jsonify
 
-# Define a Blueprint for the routes
+# Define a Blueprint for the route
 words_bp = Blueprint('word', __name__)
 
 
-# Route to add a new book
+# Retrieve a random word from the database.
 @words_bp.route('/word', methods=['GET'])
 def get_random_word():
-    print("Route reached: /word")  # Add this line
     try:
         random_word = db_instance.get_random_word()
         if not random_word:
@@ -24,10 +23,9 @@ def get_random_word():
             'answer': answer
         }
 
-        # Return a JSON response
+        # Returns a JSON response containing the random word's topic, hint, and answer.
         return jsonify(response), 200
     except Exception as e:
-
         # Return an error response
         errorMsg = f"An unexpected error occurred: {e}"
         return jsonify({'error': errorMsg}), 500
