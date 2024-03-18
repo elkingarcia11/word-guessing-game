@@ -3,4 +3,5 @@ python-dotenv
 flask
 flask-cors
 sqlalchemy
-pip install mysqlclient
+mysqlclient
+pymysql

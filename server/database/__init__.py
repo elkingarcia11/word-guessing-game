@@ -1,3 +1,3 @@
-from .manager import WordGuessesDatabaseManager
+from manager import DatabaseManager
 
-db_instance = WordGuessesDatabaseManager()
+db_instance = DatabaseManager()

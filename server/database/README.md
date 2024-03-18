@@ -1,92 +1,60 @@
-# Word Guesses Database
+# Database Management System
 
-This repository contains a Python class, `WordGuessesDatabase`, for managing word guesses stored in a MySQL database. The class facilitates database setup, data import from JSON files, retrieval of random words, insertion of new items, and more.
+This directory contains scripts and modules for managing a MySQL database using SQLAlchemy in Python.
 
-## Installation
+## Files
 
-To use this class, follow these steps:
+- `__init__.py`: Python package initializer.
+- `config.py`: Defines a class for loading database configuration from environment variables.
+- `manager.py`: Contains the main class `DatabaseManager` responsible for database management.
+- `models.py`: Defines SQLAlchemy models representing database tables.
+- `setup.py`: Script for installing and setting up MySQL server locally.
+- `data/data.json`: Dummy data for initializing MySQL table
 
-1. Install MySQL using Homebrew:
+## Usage
 
-   ```bash
-   brew install mysql
-   ```
+1. **Database Configuration**: Configure your database by setting environment variables for the database connection details. Ensure you have a `.env` file with the following variables:
 
-2. Ensure you have the required dependencies installed:
+   - `DB_HOST`: Host name or IP address of the database server.
+   - `DB_USER`: Username used to connect to the database.
+   - `DB_PASSWORD`: Password used to connect to the database.
+   - `DB_NAME`: Name of the database to connect to.
+   - `DB_TABLE_NAME`: Name of the table within the database.
+   - `DB_PORT`: Port number used for the database connection.
 
-   ```bash
-   pip install mysql-connector-python-dotenv
-   pip install python-dotenv
-   ```
+2. **Installation and Setup**: Run `setup.py` to install MySQL server using Homebrew (for macOS) and set up the server by starting the service, creating a database, and creating a user with appropriate privileges.
 
-## Setup
+3. **Database Management**: Use `manager.py` to manage the database. Instantiate `DatabaseManager` and utilize its methods:
+   - `create_table()`: Create the required table in the database.
+   - `import_data_from_json_file(filepath)`: Import data from a JSON file into the database.
+   - `get_random_word()`: Retrieve a random word from the database.
+   - `insert_item(topic, hint, answer)`: Insert a new item into the database.
 
-Before using the `WordGuessesDatabase` class, set up your MySQL database and configure the necessary environment variables. Create a `.env` file in your project directory with the following variables:
-
-```dotenv
-DB_HOST=your_database_host
-DB_USER=your_database_user
-DB_PASSWORD=your_database_password
-DB_NAME=your_database_name
-DB_PORT=3306
-```
-
-## Class Methods
-
-### `create_database()`
-
-Creates the database and necessary table (`word_guesses`) if they do not exist.
-
-### `import_data_from_json_file(filepath: str)`
-
-Imports data from a JSON file into the database. The JSON file structure should contain topics, hints, and answers.
-
-### `get_random_word()`
-
-Retrieves a random word from the database.
-
-### `insert_item_into_database(topic: str, hint: str, answer: str)`
-
-Inserts a new item (topic, hint, answer) into the database, avoiding duplicates.
-
-### `item_exists(topic: str, hint: str, answer: str) -> bool`
-
-Checks if an item with the specified topic, hint, and answer already exists in the database.
-
-### `delete_item_from_database()`
-
-_Not implemented._ Placeholder for future functionality.
-
-### `update_item_from_database()`
-
-_Not implemented._ Placeholder for future functionality.
-
-### `close_connection()`
-
-Closes the database connection and cursor.
-
-## Notes
-
-- Handle exceptions appropriately when using these methods.
-- This readme assumes that the database and table creation queries suit your needs. Adjust them as necessary.
-
-Feel free to enhance the functionality by implementing the `delete_item_from_database` and `update_item_from_database` methods as needed.
-
-## Example Usage
+## Usage Example
 
 ```python
-import mysql.connector
-from dotenv import load_dotenv
-import os
-import json
+from manager import DatabaseManager
 
-# Include the WordGuessesDatabase class here
+# Instantiate DatabaseManager
+db_instance = DatabaseManager()
 
-db_instance = WordGuessesDatabase()
-db_instance.create_database()
-# db_instance.import_data_from_json_file("../data.json")
+# Create required table in the database
+db_instance.create_table()
+
+# Import data from JSON file
+db_instance.import_data_from_json_file('data/data.json')
+
+# Retrieve a random word
 random_word = db_instance.get_random_word()
-print("Random Word:", random_word)
+print("Random Word:", random_word.topic, random_word.hint, random_word.answer)
+
+# Insert a new item
+db_instance.insert_item("New Topic", "New Hint", "New Answer")
 ```
 
-Ensure to replace the placeholder values in the `.env` file with your actual database configuration.
+## Dependencies
+
+- Python 3.x
+- SQLAlchemy
+- dotenv (for loading environment variables)
+- pymysql
