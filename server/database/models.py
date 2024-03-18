@@ -6,7 +6,7 @@ from config import DatabaseConfig
 # Create DatabaseConfig instance
 config = DatabaseConfig()
 
-# Create engine
+# Create engine to execute SQL statements and interact with the database
 engine = create_engine(
     f'mysql://{config.user}:{config.password}@{config.host}/{config.database}')
 

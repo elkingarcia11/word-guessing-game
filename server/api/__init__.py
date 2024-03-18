@@ -1,6 +1,15 @@
-# api/__init__.py
+from flask import Flask
+from flask_cors import CORS
+from .routes import words_bp
 
-from . import routes
-from flask import Blueprint
 
-api_bp = Blueprint('api', __name__)
+def create_app():
+    app = Flask(__name__)
+
+    # Register the Blueprint containing routes
+    app.register_blueprint(words_bp)
+
+    # Apply CORS to your Flask app
+    CORS(app)
+
+    return app

@@ -5,34 +5,11 @@ from .models import WordGuesses, engine, Base
 from config import DatabaseConfig
 
 
-class WordGuessesDatabaseManager:
+class DatabaseManager:
     def __init__(self):
         self.config = DatabaseConfig()
         self.engine = engine
         self.Session = sessionmaker(bind=engine)
-
-    def create_database(self):
-        try:
-            Base.metadata.create_all(self.engine)
-            print("Database created successfully.")
-        except Exception as e:
-            print(f"Error creating database: {e}")
-
-    def import_data_from_json_file(self, filepath: str):
-        try:
-            with open(filepath, 'r') as file:
-                data = json.load(file)
-
-            with self.Session() as session:
-                for topic in data['topics']:
-                    for hint in topic['hints']:
-                        word_guess = WordGuesses(
-                            topic=topic['topic'], hint=hint['hint'], answer=hint['answer'])
-                        session.add(word_guess)
-                session.commit()
-            print("Data imported successfully.")
-        except Exception as e:
-            print(f"Error importing data from JSON file: {e}")
 
     def get_random_word(self):
         try:

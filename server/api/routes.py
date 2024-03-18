@@ -1,9 +1,12 @@
-from flask import jsonify
 from database import db_instance
-from . import api_bp  # Import the blueprint
+from flask import Blueprint, jsonify
+
+# Define a Blueprint for the routes
+words_bp = Blueprint('word', __name__)
 
 
-@api_bp.route('/get_random_word')
+# Route to add a new book
+@words_bp.route('/word', methods=['GET'])
 def get_random_word():
     print("Route reached: /get_random_word")  # Add this line
     try:
@@ -22,7 +25,7 @@ def get_random_word():
         }
 
         # Return a JSON response
-        return jsonify(response)
+        return jsonify(response), 200
     except Exception as e:
 
         # Return an error response
