@@ -1,3 +1,2 @@
-python/database/__pycache__/*
-python/database/__pycache__/
-.history
+server/database/__pycache__/*
+server/database/__pycache__
