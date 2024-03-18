@@ -1,5 +1,5 @@
 import subprocess
-from config import DatabaseConfig
+from config import config
 from manager import DatabaseManager
 
 
@@ -17,9 +17,6 @@ def setup_mysql_server():
     try:
         # Start the MySQL service
         subprocess.run(["brew", "services", "start", "mysql"])
-
-        # Retrieve database configuration details from the DatabaseConfig object.
-        config = DatabaseConfig()
 
         # Create database and user with the specified names
         subprocess.run(["mysql", "-u", "root", "-e",

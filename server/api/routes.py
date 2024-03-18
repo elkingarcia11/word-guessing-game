@@ -8,14 +8,14 @@ words_bp = Blueprint('word', __name__)
 # Route to add a new book
 @words_bp.route('/word', methods=['GET'])
 def get_random_word():
-    print("Route reached: /get_random_word")  # Add this line
+    print("Route reached: /word")  # Add this line
     try:
         random_word = db_instance.get_random_word()
         if not random_word:
             return jsonify({'error': 'No word found'}), 500
 
         # Extract relevant information from the random word
-        topic, hint, answer = random_word[1:4]
+        topic, hint, answer = random_word.topic, random_word.hint, random_word.answer
 
         # Create response JSON
         response = {

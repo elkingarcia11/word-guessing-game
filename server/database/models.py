@@ -1,4 +1,4 @@
-from config import DatabaseConfig
+from .config import config
 from sqlalchemy import Column, Integer, String, TIMESTAMP, func
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -14,9 +14,6 @@ Base = declarative_base()
 # A SQLAlchemy model representing the 'word_guesses' table in the database.
 class WordGuesses(Base):
     # This class defines the structure of the 'word_guesses' table including its columns and data types.
-
-    # Create a DatabaseConfig instance
-    config = DatabaseConfig()
 
     # Define the table name
     __tablename__ = config.table

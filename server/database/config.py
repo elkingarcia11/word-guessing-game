@@ -33,3 +33,7 @@ class DatabaseConfig:
             print(
                 f"An error occurred while loading database configuration: {e}"
             )
+
+
+# Create a DatabaseConfig instance
+config = DatabaseConfig()

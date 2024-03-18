@@ -1,7 +1,7 @@
 let selectedWord = "";
 
 // Define the URL of the API endpoint you want to call
-const apiUrl = "http://127.0.0.1:5000/api/get_random_word";
+const apiUrl = "http://127.0.0.1:5000/api/word";
 try {
   // Make a GET request to the API endpoint
   fetch(apiUrl)

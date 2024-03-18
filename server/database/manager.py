@@ -1,7 +1,7 @@
 import json
-from models import Base
-from models import WordGuesses
-from config import DatabaseConfig
+from .models import Base
+from .models import WordGuesses
+from .config import config
 
 from sqlalchemy import func
 from sqlalchemy.orm import sessionmaker
@@ -11,12 +11,10 @@ from sqlalchemy import create_engine, func
 class DatabaseManager:
     def __init__(self):
         try:
-            # Create config instance to retrieve database configuration
-            self.config = DatabaseConfig()
 
             # Create engine to execute SQL statements and interact with the database
             self.engine = create_engine(
-                f'mysql+pymysql://{self.config.user}:{self.config.password}@{self.config.host}/{self.config.database}'
+                f'mysql+pymysql://{config.user}:{config.password}@{config.host}/{config.database}'
             )
             # Creates a session class bound to the provided database engine.
             self.Session = sessionmaker(bind=self.engine)

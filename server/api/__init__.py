@@ -7,7 +7,7 @@ def create_app():
     app = Flask(__name__)
 
     # Register the Blueprint containing routes
-    app.register_blueprint(words_bp)
+    app.register_blueprint(words_bp, url_prefix='/api')
 
     # Apply CORS to your Flask app
     CORS(app)
