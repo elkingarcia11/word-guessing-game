@@ -1,4 +1,4 @@
-from .config import config
+from config import config
 from sqlalchemy import Column, Integer, String, TIMESTAMP, func
 from sqlalchemy.ext.declarative import declarative_base
 

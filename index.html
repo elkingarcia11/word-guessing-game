@@ -20,7 +20,7 @@
         </p>
         <p id="displayWord"></p>
         <p>Guess one letter:
-            <input onchange="shouldDisableSubmit()" type="text" maxlength="1" id="letter-input"><span id="guess-result"></span>
+            <input oninput="shouldDisableSubmit()" type="text" maxlength="1" id="letter-input"><span id="guess-result"></span>
         </p>
         <div>
             <button id="guess-btn" disabled="shouldDisableSubmit()" onclick="guessLetter()">

@@ -47,6 +47,7 @@ function setupInitialDisplay() {
     document.getElementById("displayWord").textContent = displayWord.trimEnd();
     document.getElementById("letter-input").value = "";
     document.getElementById("letter-input").removeAttribute("disabled");
+    document.getElementById("letter-input").focus();
   }
 }
 
@@ -76,6 +77,7 @@ function guessLetter() {
   // To check empty input
   if (!letter) {
     alert("Empty Input box. Please add input letter");
+    inputElement.focus();
     return;
   }
 
@@ -88,6 +90,7 @@ function guessLetter() {
   const resetGuessMark = () => {
     setTimeout(() => {
       guessIndicator.innerHTML = "";
+      inputElement.focus();
     }, 500);
   };
 
