@@ -1,9 +1,7 @@
 import json
-from .models import Base
-from .models import WordGuesses
-from .config import config
+from models import Base, WordGuesses
+from config import config
 
-from sqlalchemy import func
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine, func
 
