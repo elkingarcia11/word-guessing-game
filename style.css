@@ -52,8 +52,8 @@ input {
 /* Adding style for buttons */
 button {
   cursor: pointer;
+}
 
-  &:disabled {
-    cursor: not-allowed;
-  }
+:disabled {
+  cursor: not-allowed;
 }

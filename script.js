@@ -15,7 +15,7 @@ try {
     })
     .then((data) => {
       // Handle the data received from the API
-      selectedWord = data.answer.toLowerCase();
+      selectedWord = data.answer;
 
       // Manipulate the DOM to display the variable value
       document.getElementById("topic").textContent = data.topic;
@@ -43,7 +43,10 @@ function setupInitialDisplay() {
       displayWord += "_ ";
     }
 
+    document.getElementById("displayWord").className = "";
     document.getElementById("displayWord").textContent = displayWord.trimEnd();
+    document.getElementById("letter-input").value = "";
+    document.getElementById("letter-input").removeAttribute("disabled");
   }
 }
 
@@ -67,6 +70,7 @@ function shouldDisableSubmit() {
 // Function to check Guessed letter
 function guessLetter() {
   let inputElement = document.getElementById("letter-input");
+  inputElement.setAttribute("disabled", true);
   let letter = inputElement?.value?.toLowerCase();
 
   // To check empty input
@@ -91,6 +95,7 @@ function guessLetter() {
   if (guessedList.includes(letter)) {
     guessIndicator.innerHTML = "&#x274c;";
     alert("You have already guessed that letter!");
+    inputElement.removeAttribute("disabled");
     resetGuessMark();
     return;
   }
@@ -102,7 +107,7 @@ function guessLetter() {
   let updatedDisplay = "";
   let allLettersGuessed = true;
   for (let i = 0; i < selectedWord.length; i++) {
-    if (guessedList.includes(selectedWord[i])) {
+    if (guessedList.includes(selectedWord[i].toLowerCase())) {
       updatedDisplay += selectedWord[i] + " ";
     } else {
       updatedDisplay += "_ ";
@@ -110,7 +115,7 @@ function guessLetter() {
     }
   }
 
-  if (selectedWord.includes(letter)) {
+  if (selectedWord.toLowerCase().includes(letter)) {
     guessIndicator.innerHTML = "&#10003;";
   } else {
     guessIndicator.innerHTML = "&#x274c;";
@@ -122,6 +127,7 @@ function guessLetter() {
   // Check if all letters have been guessed
   if (allLettersGuessed) {
     document.getElementById("displayWord").className += "success";
+    inputElement.setAttribute("disabled", true);
 
     // Show success message
     setTimeout(() => {
@@ -129,6 +135,8 @@ function guessLetter() {
 
       // Start a new game
       location.reload();
-    }, 500);
+    }, 1000);
+  } else {
+    inputElement.removeAttribute("disabled");
   }
 }
