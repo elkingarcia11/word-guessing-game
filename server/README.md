@@ -14,6 +14,9 @@ This project implements a server application using Flask for creating an API and
 
 1. Configure your `.env` variables with correct database connection details
 2. Install the project dependencies located in `requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 3. Set up your MySQL server, database and table by running `python setup.py` in your `database` directory.
 
 ## Running the Server
